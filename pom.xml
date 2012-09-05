@@ -38,7 +38,22 @@
          </plugin>
       </plugins>
    </build>
-
+   <profiles>
+      <profile>
+         <id>sonar</id>
+         <activation>
+            <activeByDefault>true</activeByDefault>
+         </activation>
+         <properties>
+            <sonar.jdbc.url>jdbc:postgresql://7.125.104.162/sonar_2_14</sonar.jdbc.url>
+            <sonar.jdbc.driver>org.postgresql.Driver</sonar.jdbc.driver>
+            <sonar.jdbc.username>sonar_2_14</sonar.jdbc.username>
+            <sonar.jdbc.password>sonar</sonar.jdbc.password>
+            <!-- SERVER ON A REMOTE HOST -->
+            <sonar.host.url>http://7.125.104.68:8214</sonar.host.url>
+         </properties>
+      </profile>
+   </profiles>
    <modules>
       <module>bookstore-model</module>
       <module>bookstore-infrastructure</module>
