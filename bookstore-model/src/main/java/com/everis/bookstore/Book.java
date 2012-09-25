@@ -15,6 +15,10 @@ public class Book {
    
    private String title;
    
+   public Book(){
+      this(null, null, null);
+   }
+   
    public Book(Long id, String isbn, String title){
       this.id = id;
       this.isbn = isbn;
@@ -47,7 +51,7 @@ public class Book {
    
    @Override
    public String toString(){
-      StringBuffer sb = new StringBuffer("Book (");
+      StringBuffer sb = new StringBuffer("Book (ID: ");
       sb.append(this.id);
       sb.append(") [ISBN: ");
       sb.append(this.isbn);

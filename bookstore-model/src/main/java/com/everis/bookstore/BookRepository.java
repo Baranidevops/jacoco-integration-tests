@@ -2,7 +2,7 @@ package com.everis.bookstore;
 
 public interface BookRepository {
    
-   public void store(Book book);
+   Book store(Book book);
    
-   public Book find(Long bookId);
+   Book find(Long bookId);
 }
