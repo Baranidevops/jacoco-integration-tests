@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://mav>en.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
    <modelVersion>4.0.0</modelVersion>
 
@@ -16,13 +16,149 @@
       <wtp.version>2.0</wtp.version>
 
       <servlet.version>2.4</servlet.version>
+      <spring.version>3.1.2.RELEASE</spring.version>
+      <slf4j.version>1.6.0</slf4j.version>
+      <spring.data.jpa.version>1.1.0.RELEASE</spring.data.jpa.version>
+      <hibernate.jpa.2.api>1.0.1.Final</hibernate.jpa.2.api>
+      <junit.version>4.10</junit.version>
+
    </properties>
 
    <dependencyManagement>
       <dependencies>
+
+         <!-- di framework -->
+         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
+         </dependency>
+         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+         </dependency>
+
+         <!-- quartz scheduling -->
+         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+         </dependency>
+         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+         </dependency>
+         <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>1.8.6</version>
+         </dependency>
+
+         <!-- persistencia -->
+         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.1.2</version>
+         </dependency>
+         <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <version>${hibernate.jpa.2.api}</version>
+         </dependency>
+         <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring.data.jpa.version}</version>
+         </dependency>
+
+         <!-- web -->
+         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+         </dependency>
+         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+         </dependency>
+         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servlet.version}</version>
+         </dependency>
+         <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.7.1</version>
+         </dependency>
+
+         <!-- utilities -->
+         <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
+            <version>5.3.2</version>
+         </dependency>
+         <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+         </dependency>
+
+         <!-- logging -->
+         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+         </dependency>
+         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+         </dependency>
+
+         <!-- testing -->
+         <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+         </dependency>
+         <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit-dep</artifactId>
+            <version>${junit.version}</version>
+         </dependency>
+         <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.0</version>
+         </dependency>
+         <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.2.8</version>
+         </dependency>
+         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+         </dependency>
+
          <dependency>
             <groupId>com.everis.bookstore</groupId>
             <artifactId>bookstore-model</artifactId>
+            <version>${project.version}</version>
+         </dependency>
+         <dependency>
+            <groupId>com.everis.bookstore</groupId>
+            <artifactId>bookstore-infrastructure</artifactId>
+            <version>${project.version}</version>
+         </dependency>
+         <dependency>
+            <groupId>com.everis.bookstore</groupId>
+            <artifactId>bookstore-application</artifactId>
             <version>${project.version}</version>
          </dependency>
       </dependencies>
@@ -49,7 +185,8 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-failsafe-plugin</artifactId>
             <configuration>
-               <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+               <reportsDirectory>${project.build.directory}/surefire-reports
+               </reportsDirectory>
                <argLine>${jacoco.agent.argLine}</argLine>
             </configuration>
             <executions>
@@ -69,8 +206,10 @@
                <includes>
                   <include>com/everis/bookstore/**</include>
                </includes>
-               <destFile>${project.build.directory}/jacoco-integration.exec</destFile> <!-- agent -->
-               <dataFile>${project.build.directory}/jacoco-integration.exec</dataFile> <!-- report -->
+               <destFile>${project.build.directory}/jacoco-integration.exec
+               </destFile> <!-- agent -->
+               <dataFile>${project.build.directory}/jacoco-integration.exec
+               </dataFile> <!-- report -->
             </configuration>
             <executions>
                <execution>
@@ -90,7 +229,8 @@
             <activeByDefault>true</activeByDefault>
          </activation>
          <properties>
-            <sonar.jdbc.url>jdbc:postgresql://7.125.104.228/sonar_2_14</sonar.jdbc.url>
+            <sonar.jdbc.url>jdbc:postgresql://7.125.104.228/sonar_2_14
+            </sonar.jdbc.url>
             <sonar.jdbc.driver>org.postgresql.Driver</sonar.jdbc.driver>
             <sonar.jdbc.username>sonar_2_14</sonar.jdbc.username>
             <sonar.jdbc.password>sonar</sonar.jdbc.password>

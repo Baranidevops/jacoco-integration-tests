@@ -5,6 +5,7 @@ package com.everis.bookstore;
  * 
  * @author jagudopr
  * @version 1.0.0
+ * 
  * @since 1.0.0
  */
 public class Book {
