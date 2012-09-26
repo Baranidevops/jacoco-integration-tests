@@ -20,7 +20,7 @@
    
    <jdbc:embedded-database id="dataSource" type="HSQL" />
    
-   <!-- Busca automaticamente en este paquete las clases con la anotacion Repository -->
+   <!-- Busca automaticamente en este paquete los repositorios JPA definidos -->
    <jpa:repositories base-package="com.everis.bookstore.persistence" />
    
    <!-- Busca automaticamente en este paquete las clases con la anotacion Component -->
