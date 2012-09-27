@@ -58,8 +58,7 @@
    <div class="container">
       <div class="row">
          <div class="span12">
-            <h1>Book search</h1>
-            <p>Greetings.</p>
+            <h1>Search engine</h1>
 
             <table id="booksList" class="table table-bordered table-hover">
                <thead>
