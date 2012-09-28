@@ -1,1 +1,1 @@
-web: sh target/bin/webapp
+web: sh bookstore-interface/target/bin/webapp
