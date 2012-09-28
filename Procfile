@@ -1,1 +1,1 @@
-web: sh bookstore-interface/target/bin/webapp
+web:    java $JAVA_OPTS -jar target/dependency/webapp-runner.jar --port $PORT bookstore-interface/target/*.war
