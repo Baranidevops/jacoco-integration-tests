@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
-    <persistence-unit name="spring-jpa" />
+<persistence version="1.0"
+   xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+   <persistence-unit name="spring-jpa" />
+
+<!--    <persistence-unit name="spring-jpa"> -->
+<!--       <provider>org.hibernate.ejb.HibernatePersistence</provider> -->
+<!--       <class>org.postgresql.Driver</class> -->
+<!--       <properties> -->
+<!--          <property name="hibernate.archive.autodetection" -->
+<!--             value="class" /> -->
+<!--          <property name="hibernate.show_sql" value="true" /> -->
+<!--          <property name="hibernate.connection.driver_class" -->
+<!--             value="org.postgresql.Drive" /> -->
+<!--          <property name="hibernate.connection.url" -->
+<!--             value="jdbc:postgresql://ec2-54-243-233-84.compute-1.amazonaws.com:5432/d1f5voiigrblhc?ssl=true" /> -->
+<!--          <property name="hibernate.connection.username" value="yqogdzqsrpxkjd" /> -->
+<!--          <property name="hibernate.connection.password" value="PhGShAO27sDcpWrZLX8qkiFbmc" /> -->
+<!--          <property name="hibernate.hbm2ddl.auto" value="create" /> -->
+<!--          <property name="hibernate.dialect" -->
+<!--             value="org.hibernate.dialect.PostgreSQLDialect" /> -->
+<!--       </properties> -->
+<!--    </persistence-unit> -->
 </persistence>

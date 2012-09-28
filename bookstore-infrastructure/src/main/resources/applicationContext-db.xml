@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
-   xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xmlns:jpa="http://www.springframework.org/schema/data/jpa"
    xmlns:context="http://www.springframework.org/schema/context"
    xsi:schemaLocation="http://www.springframework.org/schema/beans 
@@ -13,7 +12,18 @@
     http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
     http://www.springframework.org/schema/context 
     http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-   
+
+   <context:property-placeholder location="classpath:db.properties" />
+
+   <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+      destroy-method="close">
+      <beans:property name="driverClassName" value="${driver}" />
+      <beans:property name="url"
+         value="jdbc:postgresql://${host}:${port}/${dbname}" />
+      <beans:property name="username" value="${username}" />
+      <beans:property name="password" value="${password}" />
+   </beans:bean>
+
    <beans:bean id="entityManagerFactory"
       class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
       <beans:property name="dataSource" ref="dataSource" />
@@ -23,9 +33,15 @@
             class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
             <beans:property name="showSql" value="false" />
             <beans:property name="generateDdl" value="true" />
-            <beans:property name="database" value="HSQL" />
+            <beans:property name="databasePlatform"
+               value="${dialect}" />
          </beans:bean>
       </beans:property>
    </beans:bean>
-   
+
+   <beans:bean id="transactionManager"
+      class="org.springframework.orm.jpa.JpaTransactionManager">
+      <beans:property name="entityManagerFactory" ref="entityManagerFactory" />
+   </beans:bean>
+
 </beans:beans>
