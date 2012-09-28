@@ -22,7 +22,7 @@
 	         "sLengthMenu": "_MENU_ records per page"
 	      },
 	      "bProcessing" : true,
-	         "sAjaxSource" : '/bookstore-interface/rest/books/search',
+	         "sAjaxSource" : '/rest/books/search',
 	      "aoColumns" : [ {
 	            "sWidth" : '50px',
 	            "mDataProp" : "id",
