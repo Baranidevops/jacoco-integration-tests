@@ -196,37 +196,23 @@
             <version>2.7.2</version>
             <configuration>
                <argLine>
-                  -javaagent:C:\org.jacoco.agent-runtime.jar=destfile=${sonar.jacoco.reportPath}
+                  ${jacoco.ut.params}
                </argLine>
             </configuration>
          </plugin>
-
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-failsafe-plugin</artifactId>
             <configuration>
                <argLine>
-                  -javaagent:C:\org.jacoco.agent-runtime.jar=destfile=${sonar.jacoco.itReportPath}
+                  ${jacoco.it.params}
                </argLine>
-               <!-- <argLine>${jacoco.agent.argLine}</argLine> -->
             </configuration>
             <executions>
                <execution>
                   <goals>
                      <goal>integration-test</goal>
                      <goal>verify</goal>
-                  </goals>
-               </execution>
-            </executions>
-         </plugin>
-         <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <executions>
-               <execution>
-                  <id>agent</id>
-                  <goals>
-                     <goal>prepare-agent</goal>
                   </goals>
                </execution>
             </executions>
@@ -248,7 +234,6 @@
             <sonar.jdbc.password>${sonar.db.password}
             </sonar.jdbc.password>
             <sonar.host.url>${sonar.web.url}</sonar.host.url>
-
             <sonar.jacoco.reportPath>${project.build.directory}/jacoco-unit.exec
             </sonar.jacoco.reportPath>
             <sonar.jacoco.itReportPath>${project.build.directory}/jacoco-integration.exec
