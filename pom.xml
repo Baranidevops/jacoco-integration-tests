@@ -4,11 +4,11 @@
 
    <groupId>com.everis.bookstore</groupId>
    <artifactId>bookstore</artifactId>
-   <version>1.0.0-SNAPSHOT</version>
+   <version>1.0.0</version>
    <packaging>pom</packaging>
 
    <name>bookstore</name>
-   <url>http://maven.apache.org</url>
+   <url>https://github.com/joragupra/jacoco-integration-tests</url>
 
    <properties>
       <!-- environment options -->
